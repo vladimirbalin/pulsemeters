@@ -6,6 +6,11 @@
 			left: 50px
 		.next
 			right: 50px
+@media ( max-width: 1024px )
+	.header, .promo, .consultation, .advantages, .catalog
+		padding-right: 15px
+		padding-left: 15px
+	
 ////////////////////////////////////////////
 @media ( max-width: 991px )
 	.container
@@ -29,13 +34,14 @@
 	// 		margin: 0 auto;
 		
 ///////////////////////////////////////////
-@media ( max-width: 767px )     
+@media ( max-width: 768px )     
 	.container
-		max-width: 720px
+		max-width: 100%
 	.header
 		justify-content: space-around
 		&__official
 			display: none
+		padding: 0 0
 	.promo
 		padding: 21px 0 33px 0
 	.advantages
@@ -46,20 +52,27 @@
 			min-height: 250px
 		&__descr
 			width: 70%
+			padding-right: 0
 		&__title
 			margin-top: 15px
 		&__descr
 			margin-top: 10px
+	.consultation
+		padding: 0 5px 
 	.carousel
 		.prev
 			display: none
 		.next
 			display: none
+	.owl-carousel
+		width: 100%
+	.footer
+		width: 100% 
 
 ///////////////////////////////////////////
 @media ( max-width: 575px )   
 	.container
-		max-width: 540px 
+		max-width: 100% 
 	.title
 		font-size: 25px
 	.header
@@ -95,14 +108,9 @@
 	.consultation
 		padding: 21px 0 33px 0
 		min-height: 500px
-	// .owl-carousel .owl-item .active {
-	// 	display: block;
-	// 	width: 400px;
-	// 	margin: 0 auto;
-	// .owl-carousel .owl-loaded .owl-drag
-	// 	width: 450px
-	// 	.owl-item
-	// 		width: 450px
+	
+	// .owl-carousel
+	// 	width: 100%
 	.catalog
 		&__content_active
 			justify-content: center
@@ -112,33 +120,90 @@
 			font-size: 12px
 	.reviews
 		&-item
+			padding: 0px 20px
+			padding-right: 0
 			img
 				display: none
 			margin-top: 40px
 			&:nth-child(2)
 				margin-top: 20px
 			&__descr
-				padding-right: 0px
-				text-align: justify
+				padding-right: 0
 			&__content
 				margin: 0 15px
 				font-size: 14px
 				line-height: 14px
 			&__subtitle
 				margin-top: 10px
+	.footer
+		width: 100%
+// <-------------------------------------------->
+@media ( max-width: 426px )	
+	.container
+		max-width: 100% 
+	// .owl-carousel
+	// 	width: 100%
+	.reviews
+		&-item	
+			&__descr
+				padding-right: 0
+	.footer
+		width: 100% 
+		&__info
+			width: 100%
+	
 ///////////////////////////////////////////////I
-@media ( max-width: 425px )	
+@media ( max-width: 414px )	
+	.container
+		max-width: 100%
 	.catalog
 		&__tab
 			width: 102px
 			height: 34px
 			font-size: 9px
-			line-height: 34px		   
+			line-height: 34px
+	// .owl-carousel
+	// 	width: 100%
+	.reviews
+		&-item	
+			padding-left: 0
+			&__descr
+				padding-right: 0
+	.footer
+		&__social 
+			margin-top: 19px
+			&-item
+				margin: 0px 5px;
+	
+////////////////////////////////////////////////////I
+@media ( max-width: 375px )
+	.container
+		max-width: 100% 
+	.title
+		font-size: 20px
+	.consultation
+		&__descr
+			font-size: 16px
+	// .owl-carousel
+	// 	width: 100%
+	.reviews
+		&-item	
+			padding-left: 0
+			&__descr
+				padding-right: 0
+	// .footer
+	// 	max-width: 100% 
+	// 	&__info
+	// 		width: 100%
+	// 	&__social 
+	// 		margin-top: 19px
+	// 		&-item
+	// 			margin: 0px 5px;
 
 /////////////////////////////////////////////I
 @media ( max-width: 320px )
 	.container
-		max-width: 300px
+		max-width: 100%
 	.title
 		font-size: 20px
 	.header
@@ -191,6 +256,11 @@
 			&__descr
 				font-size: 12px
 				line-height: 12px
+	// .owl-carousel
+	// 	width: 100%
+	.footer
+		&__addr
+			font-size: 17px;
 	
 		
 

@@ -179,9 +179,9 @@ $(document).ready(function(){
     document.addEventListener('click', function(e) {
         let map = document.querySelector('#map-wrap iframe')
         if(e.target.id === 'map-wrap') {
-          map.style.pointerEvents = 'all'
-        } else {
-          map.style.pointerEvents = 'none'
-        }
+          map.style.pointerEvents = 'all';
+          return false;
+        } 
+        map.style.pointerEvents = 'none';        
       })
 });
