@@ -1,3 +1,4 @@
+'use strict';
 const gulp        = require('gulp');
 const browserSync = require('browser-sync');
 const sass        = require('gulp-sass');
@@ -26,6 +27,15 @@ gulp.task('styles', function() {
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest("dist/css"))
         .pipe(browserSync.stream());
+});
+
+gulp.task('styles-src', function() {
+    return gulp.src("src/sass/**/*.+(scss|sass)")
+        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+        .pipe(rename({suffix: '.min', prefix: ''}))
+        .pipe(autoprefixer())
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest("src/css"));        
 });
 
 gulp.task('watch', function() {
@@ -65,4 +75,4 @@ gulp.task('images', function () {
         .pipe(gulp.dest("dist/img"));
 });
 
-gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'scripts', 'fonts', 'icons', 'mailer', 'html', 'images'));
+gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'styles-src', 'scripts', 'fonts', 'icons', 'mailer', 'html', 'images'));

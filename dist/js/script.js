@@ -39,12 +39,13 @@
 // document.querySelector('.next').addEventListener('click', function () {
 // 	slider.goTo('next');
 // });
-
+'use strict';
 $(document).ready(function(){
 	$('.owl-carousel').owlCarousel({
     loop: true,
     center: true,
     nav: false,	
+    smartSpeed:1150,
     responsive:{ 
         0:{
             center: true,
@@ -105,8 +106,6 @@ $(document).ready(function(){
             $('.overlay, #order').fadeIn('slow');
         });
     });
-
-
 
     function validateForms(form){
         $(form).validate({
@@ -176,12 +175,12 @@ $(document).ready(function(){
 
     new WOW().init();
 
-    document.addEventListener('click', function(e) {
-        let map = document.querySelector('#map-wrap iframe')
+    let map = document.querySelector('#map-wrap iframe');
+    document.addEventListener('click', function(e) {        
         if(e.target.id === 'map-wrap') {
-          map.style.pointerEvents = 'all'
-        } else {
-          map.style.pointerEvents = 'none'
-        }
+          map.style.pointerEvents = 'all';
+          return false;
+        } 
+        map.style.pointerEvents = 'none';        
       })
 });
