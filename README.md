@@ -1,2 +1,3 @@
 # project_5
-pulsemeters/maket
+pulsemeters
+html/css/native js prac
