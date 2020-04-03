@@ -7,6 +7,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const rename = require("gulp-rename");
 const imagemin = require('gulp-imagemin');
 const htmlmin = require('gulp-htmlmin');
+const imageminJpegtran = require('imagemin-jpegtran');
+
 
 gulp.task('server', function() {
 
@@ -29,12 +31,11 @@ gulp.task('styles', function() {
         .pipe(browserSync.stream());
 });
 
-gulp.task('styles-src', function() {
+gulp.task('styles-dev', function() {
     return gulp.src("src/sass/**/*.+(scss|sass)")
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(rename({suffix: '.min', prefix: ''}))
         .pipe(autoprefixer())
-        .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest("src/css"));        
 });
 
@@ -49,10 +50,10 @@ gulp.task('html', function () {
         .pipe(gulp.dest("dist/"));
 });
 
-gulp.task('scripts', function () {
-    return gulp.src("src/js/**/*.js")
-        .pipe(gulp.dest("dist/js"));
-});
+// gulp.task('scripts', function () {
+//     return gulp.src("src/js/**/*.js")
+//         .pipe(gulp.dest("dist/js"));
+// });
 
 gulp.task('fonts', function () {
     return gulp.src("src/fonts/**/*")
@@ -70,9 +71,13 @@ gulp.task('mailer', function () {
 });
 
 gulp.task('images', function () {
-    return gulp.src("src/img/**/*")
-        .pipe(imagemin())
-        .pipe(gulp.dest("dist/img"));
+  return gulp.src('src/img/*')
+    .pipe(imagemin([
+      imagemin.jpegtran({quality: 50, progressive: true, fastCrush: true, smooth: 50}),
+      imagemin.optipng({optimizationLevel: 5}),
+    ], {verbose: true}))
+    .pipe(gulp.dest('dist/img'))
 });
 
-gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'styles-src', 'scripts', 'fonts', 'icons', 'mailer', 'html', 'images'));
+gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'styles-dev', 'fonts', 'icons', 'mailer', 'html', 'images'));
+gulp.task('build', gulp.parallel('styles', 'fonts', 'icons', 'mailer', 'html', 'images'));

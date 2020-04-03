@@ -1,3 +1,17 @@
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
+
+import './parts/jquery.maskedinput.min';
+import 'jquery-validation';
+import 'owl.carousel';
+import WOW from './parts/wow.min';
+import './parts/awesome.fonts';
+
+
+window.addEventListener('DOMContentLoaded', function () {
+
+
 // $(document).ready(function(){
 // 	$('.carousel__inner').slick({
 // 		speed: 1000,
@@ -39,8 +53,8 @@
 // document.querySelector('.next').addEventListener('click', function () {
 // 	slider.goTo('next');
 // });
-'use strict';
-$(document).ready(function(){
+  'use strict';
+
 	$('.owl-carousel').owlCarousel({
     loop: true,
     center: true,
@@ -75,7 +89,7 @@ $(document).ready(function(){
                 $('.catalog-item__list').eq(i).toggleClass('catalog-item__list_active');
             })
         });
-    };
+    }
 
     toggleSlide('.catalog-item__link');
     toggleSlide('.catalog-item__back');
@@ -83,11 +97,11 @@ $(document).ready(function(){
     const owl = $('.owl-carousel');
     $('.prev').click(function() {
         owl.trigger('prev.owl.carousel');
-    })
+    });
 
     $('.next').click(function() {
         owl.trigger('next.owl.carousel');
-    })
+    });
 
     //modal
 
@@ -95,10 +109,14 @@ $(document).ready(function(){
         $('.overlay, #consultation').fadeIn('slow');
     });
     $('.modal__close').on('click', function () {
-        $('.overlay, #consultation, #thanks, #order').fadeOut('slow');
-        
+        $('.overlay, #consultation, #thanks, #order').fadeOut('slow');        
     });
- 
+    //на esc тоже закрываем
+    $(document).keydown(function(e) {
+        if (e.keyCode === 27) {
+            $('.overlay, #consultation, #thanks, #order').fadeOut('slow');
+        }
+    }); 
 
     $('.button_mini').each(function(i){
         $(this).on('click', function() {
@@ -123,7 +141,7 @@ $(document).ready(function(){
             messages: {
                 name: {
                     required: "ВВЕДИТЕ СВОЁ ИМЯ",
-                    minlength: jQuery.validator.format("Введите {0} символов!")
+                    minlength: window.$.validator.format("Введите {0} символов!")
                 },
                 phone: "Пожалуйста, введите свой номер телефона",
                 email: {
@@ -163,8 +181,7 @@ $(document).ready(function(){
             $('.pageup').fadeIn();
         } else {
             $('.pageup').fadeOut();
-        }
-        
+        }        
     });
     //Smooth scroll 
     $("a[href^='#up']").click(function(){
@@ -176,11 +193,11 @@ $(document).ready(function(){
     new WOW().init();
 
     let map = document.querySelector('#map-wrap iframe');
-    document.addEventListener('click', function(e) {        
-        if(e.target.id === 'map-wrap') {
-          map.style.pointerEvents = 'all';
-          return false;
-        } 
-        map.style.pointerEvents = 'none';        
-      })
+        $(document).click(function(e) { 
+            if(e.target.id === 'map-wrap') {
+                map.style.pointerEvents = 'all';
+                return false;
+            } 
+            map.style.pointerEvents = 'none';        
+      });
 });
