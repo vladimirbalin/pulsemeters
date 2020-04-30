@@ -1,3 +1,3 @@
 # project_5
 pulsemeters
-html/css/native js prac
+html/css/jq prac
