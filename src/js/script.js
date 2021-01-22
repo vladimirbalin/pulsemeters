@@ -104,12 +104,12 @@ window.addEventListener('DOMContentLoaded', function () {
             },
             messages: {
                 name: {
-                    required: "ВВЕДИТЕ СВОЁ ИМЯ",
-                    minlength: window.$.validator.format("Введите {0} символов!")
+                    required: "Введите своё имя",
+                    minlength: window.$.validator.format("Поле должно состоять минимум из {0} символов!")
                 },
                 phone: "Пожалуйста, введите свой номер телефона",
                 email: {
-                    required: "Плз, введите свою почту",
+                    required: "Пожалуйста, введите свою почту",
                     email: "Неправильно введен адрес почты"
                 }
             }
@@ -125,18 +125,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
     $('form').submit(function(e) {
         e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: "mailer/smart.php",
-            data: $(this).serialize()
-        }).done(function() {
-            $(this).find("input").val("");
-            $('#consultation, #order').fadeOut();
-            $('.overlay, #thanks').fadeIn('slow');
-
-            $('form').trigger('reset');
-        });
-        return false;
     });
 
     //pageup and  
