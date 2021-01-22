@@ -1,7 +1,8 @@
 ```
 npm install
 npx webpack
-
+```
+then:
 ```
 npm run gulp
 ```
