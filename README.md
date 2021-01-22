@@ -4,9 +4,9 @@ npx webpack
 ```
 then:
 ```
-npm run gulp
+gulp
 ```
 or
 ```
-npm run gulp build
+gulp build
 ```
