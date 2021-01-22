@@ -1,3 +1,11 @@
-# project_5
-pulsemeters
-html/css/jq prac
+```
+npm install
+npx webpack
+
+```
+npm run gulp
+```
+or
+```
+npm run gulp build
+```
